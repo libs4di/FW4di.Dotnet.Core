@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW4di.Dotnet.Core", "FW4di.Dotnet.Core\FW4di.Dotnet.Core.csproj", "{24805350-B3E6-4F25-B809-B2C23534045C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW4di.Dotnet.Core.Tests", "FW4di.Dotnet.Core.Tests\FW4di.Dotnet.Core.Tests.csproj", "{B7F85F06-429B-4628-ACCA-74AB5A7C3C8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24805350-B3E6-4F25-B809-B2C23534045C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24805350-B3E6-4F25-B809-B2C23534045C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24805350-B3E6-4F25-B809-B2C23534045C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24805350-B3E6-4F25-B809-B2C23534045C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F85F06-429B-4628-ACCA-74AB5A7C3C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F85F06-429B-4628-ACCA-74AB5A7C3C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F85F06-429B-4628-ACCA-74AB5A7C3C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F85F06-429B-4628-ACCA-74AB5A7C3C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E923A8EC-40E5-4375-9D52-6AF89257206A}
+	EndGlobalSection
+EndGlobal
