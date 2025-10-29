@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace FW4di.Dotnet.Core.DependencyInjection;
 
-public class NinjectDIManager : NinjectModule, IDIManager
+internal class NinjectDIManager : NinjectModule, IDIManager
 {
     /// <summary> 
     /// these are static because of Ninject initialization logic. Ninject create new instances every init and we have to store original one.
