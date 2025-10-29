@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace FW4di.Dotnet.Core.IO;
 
+/// <summary> The `XmlHelper` class provides simple methods for XML serialization and deserialization of .NET objects. </summary>
 public static class XmlHelper
 {
     public static string Serialize<T>(T? obj)
