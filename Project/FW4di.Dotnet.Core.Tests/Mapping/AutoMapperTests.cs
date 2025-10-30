@@ -5,11 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 using FW4di.Dotnet.Core.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FW4di.Dotnet.Core.Tests.Mapping;
 

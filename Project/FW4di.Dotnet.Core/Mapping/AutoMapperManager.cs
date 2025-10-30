@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace FW4di.Dotnet.Core.Mapping;
 

@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 using FW4di.Dotnet.Core.Mocking;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 using Mocker = Moq.Mock;

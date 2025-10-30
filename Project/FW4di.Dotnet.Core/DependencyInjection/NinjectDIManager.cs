@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 using Ninject;
 using Ninject.Modules;
-using System;
 using System.Reflection;
 
 namespace FW4di.Dotnet.Core.DependencyInjection;
