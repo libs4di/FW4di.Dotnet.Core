@@ -3,7 +3,6 @@
 Copyright (c) 2025 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
-
 using Ninject;
 using Ninject.Modules;
 using System.Reflection;
@@ -15,9 +14,9 @@ public class NinjectDIManager : NinjectModule, IDIManager
     /// <summary> 
     /// these are static because of Ninject initialization logic. Ninject create new instances every init and we have to store original one.
     /// </summary>
-    static Action bindings;
-    static StandardKernel kernel;
-
+    private static Action? bindings;
+    private static StandardKernel? kernel;
+    
     #region Ninject
     /// <summary> 
     /// Will call automatically by Ninject
@@ -34,28 +33,37 @@ public class NinjectDIManager : NinjectModule, IDIManager
     public void Init(Action bindingsParam)
     {
         bindings = bindingsParam;
-
         kernel = new StandardKernel();
+
+        kernel.Bind<IDIManager>().ToConstant(this).InSingletonScope();
+
         kernel.Load(Assembly.GetExecutingAssembly());
     }
 
     public void Bind<TInterface, TImplementation>(DILifetimeScopes scope) where TImplementation : TInterface
     {
+        if (kernel == null)
+            throw new InvalidOperationException("DIManager not initialized. Call Init() first.");
+
         switch (scope)
         {
-            case DILifetimeScopes.Transient: kernel?.Bind<TInterface>().To<TImplementation>().InTransientScope(); break;
-            case DILifetimeScopes.Singleton: kernel?.Bind<TInterface>().To<TImplementation>().InSingletonScope(); break;
-            case DILifetimeScopes.Thread: kernel?.Bind<TInterface>().To<TImplementation>().InThreadScope(); break;
+            case DILifetimeScopes.Transient: kernel.Bind<TInterface>().To<TImplementation>().InTransientScope(); break;
+            case DILifetimeScopes.Singleton: kernel.Bind<TInterface>().To<TImplementation>().InSingletonScope(); break;
+            case DILifetimeScopes.Thread: kernel.Bind<TInterface>().To<TImplementation>().InThreadScope(); break;
         }
     }
 
-    public void Bind<TInterface, TImplementation>(DILifetimeScopes scope, TImplementation instance) where TImplementation : TInterface, ICloneable
+    public void Bind<TInterface, TImplementation>(DILifetimeScopes scope, TImplementation instance)
+        where TImplementation : TInterface, ICloneable
     {
+        if (kernel == null)
+            throw new InvalidOperationException("DIManager not initialized. Call Init() first.");
+
         switch (scope)
         {
-            case DILifetimeScopes.Transient: kernel?.Bind<TInterface>().ToMethod(_ => (TInterface)instance.Clone()).InTransientScope(); break;
-            case DILifetimeScopes.Singleton: kernel?.Bind<TInterface>().ToMethod(_ => instance).InSingletonScope(); break;
-            case DILifetimeScopes.Thread: throw new NotImplementedException(); //kernel.Bind<TInterface>().ToMethod(context => instance).InThreadScope(); break;
+            case DILifetimeScopes.Transient: kernel.Bind<TInterface>().ToMethod(_ => (TInterface)instance.Clone()).InTransientScope(); break;
+            case DILifetimeScopes.Singleton: kernel.Bind<TInterface>().ToMethod(_ => instance).InSingletonScope(); break;
+            case DILifetimeScopes.Thread: throw new NotImplementedException();
         }
     }
     #endregion

@@ -46,6 +46,31 @@ public class DependencyInjectionTests
     }
 
     [TestMethod]
+    public void InstanceDiSelfInject()
+    {
+        IDIManager di = CreateDIEnvironment();
+        di.Init
+        (
+            () =>
+            {
+                di.Bind<IService1, Service1>(DILifetimeScopes.Transient);
+                di.Bind<IService2, Service2>(DILifetimeScopes.Singleton);
+            }
+        );
+
+        di.GetDependency<IService1>();
+        var ser11 = di.GetDependency<IService1>(); // new object of Service1 (second)
+        di.GetDependency<IService2>();
+        var ser22 = di.GetDependency<IService2>(); // same oobject because of singleton
+
+        Assert.IsTrue(ser11.RefCounter1 == 2, "DependencyInjectionTests.InstanceDiSelfInject - Service1 was created twice");
+        Assert.IsTrue(ser22.RefCounter2 == 1, "DependencyInjectionTests.InstanceDiSelfInject - Service2 is singleton");
+
+        ser22.CreateService1(); //third object of Service1 created internally by Service2
+        Assert.IsTrue(ser11.RefCounter1 == 3, "DependencyInjectionTests.InstanceDiSelfInject - third object of Service1 created internally by Service2");
+    }
+
+    [TestMethod]
     public void InstanceInject()
     {
         string injectedName = "Prototype object";
