@@ -60,16 +60,20 @@ public class XmlHelperTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void Serialize_NullObject_ShouldThrowException()
     {
-        XmlHelper.Serialize<TestClass>(null);
+        Assert.Throws<ArgumentNullException>(() =>
+        {
+            XmlHelper.Serialize<TestClass>(null);
+        });
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void Deserialize_NullString_ShouldThrowException()
     {
-        XmlHelper.Deserialize<TestClass>(null);
+        Assert.Throws<ArgumentNullException>(() =>
+        {
+            XmlHelper.Deserialize<TestClass>(null);
+        });
     }
 }

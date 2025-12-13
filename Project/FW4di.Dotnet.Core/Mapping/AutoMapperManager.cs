@@ -13,7 +13,7 @@ public class AutoMapperManager
 {
     public IMapper Mapper { get; }
 
-    Microsoft.Extensions.Logging.ILoggerFactory CreateSimpleLoggerFactory
+    ILoggerFactory CreateSimpleLoggerFactory
     {
         get
         {
