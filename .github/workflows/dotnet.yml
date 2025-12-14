@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     env:
-      Solution_Name: Project/FW4di.Dotnet.Core.sln
+      Solution_Name: Project/FW4di.Dotnet.Core.slnx
       Test_Project_Path: Project/FW4di.Dotnet.Core.Tests/FW4di.Dotnet.Core.Tests.csproj
 
     steps:
