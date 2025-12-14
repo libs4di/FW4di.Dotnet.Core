@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FW4di.Dotnet.Core.Tests/FW4di.Dotnet.Core.Tests.csproj" />
+  <Project Path="FW4di.Dotnet.Core/FW4di.Dotnet.Core.csproj" />
+</Solution>
